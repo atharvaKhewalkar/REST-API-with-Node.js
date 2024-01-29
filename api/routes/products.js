@@ -9,9 +9,14 @@ router.get('/',(req,res)=>{
     })
 })
 
-router.post('/',(req,res)=>{
+router.post('/',(req,res,next)=>{
+    const product={
+        name:req.body.name,
+        price:req.body.price
+    }
     res.status(201).json({
-        message:"handling post request for products"
+        message:"handling post request for products",
+        createdProduct:product
     })
 })
 
@@ -30,7 +35,6 @@ router.get('/:productId',(req,res)=>{
         }
     
 })
-
 
 router.patch('/:productId',(req,res)=>{
     res.status(200).json({
